@@ -1,0 +1,6 @@
+["Daily Attendance Report","Attendance Muster Report","On Duty Report","Early Out Report","Maximum Time Clocked Report"
+,"Late In Report","Absentee Report","Shift Summary Report","Attendance Summary Report","Attendance Regularization Request Report"
+,"Shift Roster Report","Shift Change Request Report","Shift Roster Change Request Report","Employee Shift Plan Report"
+,"Attendance Summary Upload Report","Attendance With Geo Location Report","Attendance Penalization Report"
+,"Attendance Muster Report 2","Web Check-In Report","Break Hours Report","Employees Summary Report","Biometric Error View Report"
+,"OverTime Daily Report","Overtime Summary Report","Shortage in work hours Report","SAP Integration Report"]

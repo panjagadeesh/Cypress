@@ -1,4 +1,10 @@
 [{
+     "Inputshift" :"testingcypress",
+     "Inputcode" : "sdfsdkf",
+     "MinHHFullday" : "08",
+     "MinMMFullday" : "16",
+     "MinHHhalfday" : "04",
+     "MinMMhalfday" : "30",
      "sessionName": "session1",
      "StartTimeHH": "09",
      "StartTimeMM": "19",

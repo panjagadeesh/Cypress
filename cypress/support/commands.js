@@ -18,7 +18,7 @@ Cypress.Commands.add('Admin_login', (username, password) => {
   //
   cy.viewport(2000, 1080); // Set viewport size
 
-  cy.visit('https://uat.settings.akriviahcm.in/login', { failOnStatusCode: false }); // Visit the login page and ignore failures temporarily
+  cy.visit('https://settings-comics.akriviahcm.io/login', { failOnStatusCode: false }); // Visit the login page and ignore failures temporarily
 
   // Handle any unexpected errors or logs
   cy.on('uncaught:exception', (err, runnable) => {

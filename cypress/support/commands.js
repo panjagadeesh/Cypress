@@ -14,30 +14,38 @@
 
 // Admin loggin///
 
-Cypress.Commands.add('Admin_login', (username, password) => {
-  //
-  cy.viewport(2000, 1080); // Set viewport size
+Cypress.Commands.add("visitGlobal", (envKey = "settings") => {
+  const baseUrl = Cypress.env(envKey) || Cypress.config("baseUrl");
 
-  cy.visit('https://settings-comics.akriviahcm.io/login', { failOnStatusCode: false }); // Visit the login page and ignore failures temporarily
+  cy.visit(`${baseUrl}/login`, { failOnStatusCode: false });
 
-  // Handle any unexpected errors or logs
-  cy.on('uncaught:exception', (err, runnable) => {
-    // Ignore known errors or handle them gracefully
-    return false;
+  // Handle unexpected errors globally
+  cy.on("uncaught:exception", (err, runnable) => {
+    return false; // Ignore known errors
   });
+});
 
-  cy.wait(1000); // Wait for page to load (adjust as needed)
 
-  cy.get('#username').type(username); // Enter username
+Cypress.Commands.add("loginDetails", (role, username, password) => {
+  cy.viewport(2000, 1080);
+  cy.wait(1000);
 
-  cy.wait(1000); // Wait for username input (adjust as needed)
+  if (role === "admin") {
+    cy.get("#username").type(username);
+    cy.wait(1000);
+    cy.get("#password").type(password);
+    cy.get(".ah-login-action-set > .ah-btn").click();
+  } else if (role === "employee") {
+    cy.get("#emp_id").type(username);
+    cy.get("#password").click().type(password);
+    cy.get(".ah-login-btn").click();
+  } else {
+    throw new Error("Invalid role provided! Use 'admin' or 'employee'.");
+  }
 
-  cy.get('#password').type(password); // Enter password
+  cy.wait(8000);
+});
 
-  cy.get('.ah-login-action-set > .ah-btn').click(); // Click login button
-
-  // cy.wait(2000); // Wait for login to complete (adjust as needed)
-})
 
 
 // UI-3 specific module //

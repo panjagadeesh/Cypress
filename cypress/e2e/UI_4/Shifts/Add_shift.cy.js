@@ -3,17 +3,17 @@ import ShiftPage from "../../../support/PageObjects/UI_4/ShiftsPageObject/AddShi
 
 describe('Shift Management Test', function () {
   const shiftPage = new ShiftPage();
-
+ 
 
   it('Logs in, navigates to Attendance Management, and adds a shift', function () {
     Cypress.config('defaultCommandTimeout', 10000);
     cy.visitGlobal();
-    cy.fixture("AddShift.json").then((data) => {
+    
     cy.loginDetails("admin", "cadmin", "Master@1234")
     cy.adminmodule("Attendance Settings");
     cy.Attendance_Sub("Shifts");
     // Add Shift
-    
+    cy.fixture("AddShift.json").then((data) => {
     shiftPage.clickAddShift();
       if (data.length)
         shiftPage.fillShiftDetails(data[0]);
@@ -28,10 +28,7 @@ describe('Shift Management Test', function () {
       } catch (error) {
         cy.log('Error in navigation function:', error.message);
       }
-
-
       // Handle Sessions
-
       shiftPage.addAndFillSessions(data);
       shiftPage.handleSingleShift(data);
     });
